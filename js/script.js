@@ -76,42 +76,50 @@ console.log("Random Quote: ", getRandomQuote())
 
 
 //function to print the quote as an HTML element
-function printQuote() {
-
+function printQuote(){
   let recallRandomQuote = getRandomQuote();
-  let printRandomQuote = '';
+  let printRandomQuote = '' ; 
   
-    printRandomQuote += '<p class ="quote"> ${recallRandomQuote.quote} </p>';
-    printRandomQuote += '<p class ="source"> ${recallRandomQuote.source}
+    printRandomQuote += `<p class ="quote"> ${recallRandomQuote.quote}</p>`;  
+    printRandomQuote += `<p class ="source"> ${recallRandomQuote.source}</p>`;
 
     if(quotes.citation){
-      printRandomQuote += '<span> class ="citation">${recallRandomQuote.citation}</span>';
+      printRandomQuote += `<span class ="citation">${recallRandomQuote.citation}</span>`;
     }
 
     if(quotes.year){
-      printRandomQuote += '<span class ="year">${recallRandomQuote.year}</span>';
+      printRandomQuote += `<span class ="year">${recallRandomQuote.year}</span>`;
     }
-  
+
     if(quotes.tag){
-      printRandomQuote += '<span class = "tag"> ${recallRandomQuote.tag}</span>';
+      printRandomQuote += `<span class = "tag"> ${recallRandomQuote.tag}</span>`;
     }
-
-   </p>';
-
-  return printRandomQuote;  
+  return printRandomQuote;
 }
 
-console.log(printQuote())
-
+// console.log(printQuote())
 document.getElementById('quote-box').innerHTML = printQuote(); 
 
 
 
+//function changes the background color dynamically by setting the rgb value at random
+function randomBackgroundColor() {
+  let r = Math.floor(Math.random() * 256) + 1;
+  let g =  Math.floor(Math.random() * 256) + 1;
+  let b = Math.floor(Math.random() * 256) + 1;
+  bgRGB = 'rgb(' + r + ',' + g + ',' + b + ')';  
+  return bgRGB;  
+}
+//Passing the above function to change the backgroundcolor change at random
+document.body.style.background = randomBackgroundColor();
 
+// console.log(randomBackgroundColor());
+
+
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
-
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
