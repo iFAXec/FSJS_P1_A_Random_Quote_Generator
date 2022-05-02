@@ -61,7 +61,6 @@ let quotes = [
   }  
 ];
 
-console.log(quotes[4].tag)
 // console.log(quotes);
 
 
@@ -79,21 +78,25 @@ console.log("Random Quote: ", getRandomQuote())
 //function to print the quote as an HTML element
 function printQuote() {
 
-  let recallRandomQuote= getRandomQuote();  
-  let printRandomQuote = `
-  <p class = "quote"> ${recallRandomQuote.quote}</p>  
-  <p class = "source"> ${recallRandomQuote.source} 
+  let recallRandomQuote = getRandomQuote();
+  let printRandomQuote = '';
+  
+    printRandomQuote += '<p class ="quote"> ${recallRandomQuote.quote} </p>';
+    printRandomQuote += '<p class ="source"> ${recallRandomQuote.source}
+
     if(quotes.citation){
-      <span class = "citation"> + ${recallRandomQuote.citation} + </span> 
+      printRandomQuote += '<span> class ="citation">${recallRandomQuote.citation}</span>';
     }
+
     if(quotes.year){
-    <span class = "year"> + ${recallRandomQuote.year} + </span>
+      printRandomQuote += '<span class ="year">${recallRandomQuote.year}</span>';
     }
-    
+  
     if(quotes.tag){
-      <span class = "tag"> + ${recallRandomQuote.tag} + </span>
+      printRandomQuote += '<span class = "tag"> ${recallRandomQuote.tag}</span>';
     }
-  </p>`;
+
+   </p>';
 
   return printRandomQuote;  
 }
