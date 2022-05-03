@@ -121,7 +121,7 @@ function randomBackgroundColor() {
 // console.log(randomBackgroundColor());
 
 
-setInterval(printQuote, 5000);
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button
