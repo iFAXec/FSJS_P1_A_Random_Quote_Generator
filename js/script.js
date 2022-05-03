@@ -26,6 +26,7 @@ let quotes = [
     source: "Rocky Balboa",
     citation: "Rocky",
     year: "2006",
+    tag: "movie",
   },
 
   {
@@ -71,35 +72,39 @@ function getRandomQuote() {
   // console.log("Random Number: ", getQuoteFromArray); 
   return quotes[getQuoteFromArray]; 
 }
-console.log("Random Quote: ", getRandomQuote())
+// console.log("Random Quote: ", getRandomQuote())
 
 
 
 //function to print the quote as an HTML element
 function printQuote(){
   let recallRandomQuote = getRandomQuote();
+
+  //building the HTML one line at a time and attaching it to the variable printRandomQuote
   let printRandomQuote = '' ; 
   
     printRandomQuote += `<p class ="quote"> ${recallRandomQuote.quote}</p>`;  
     printRandomQuote += `<p class ="source"> ${recallRandomQuote.source}</p>`;
 
-    if(quotes.citation){
+    if(recallRandomQuote.citation){
       printRandomQuote += `<span class ="citation">${recallRandomQuote.citation}</span>`;
     }
 
-    if(quotes.year){
+    if(recallRandomQuote.year){
       printRandomQuote += `<span class ="year">${recallRandomQuote.year}</span>`;
     }
 
-    if(quotes.tag){
+    if(recallRandomQuote.tag){
       printRandomQuote += `<span class = "tag"> ${recallRandomQuote.tag}</span>`;
     }
-  return printRandomQuote;
+//changes the background color from within printQuote function by calling the randombackgroundColor function
+  document.body.style.background = randomBackgroundColor();    
+
+  //Inserts the HTML build into the HTML within the printQuote function
+  return document.getElementById('quote-box').innerHTML = printRandomQuote; 
 }
 
-// console.log(printQuote())
-document.getElementById('quote-box').innerHTML = printQuote(); 
-
+// console.log(printQuote());
 
 
 //function changes the background color dynamically by setting the rgb value at random
@@ -111,12 +116,12 @@ function randomBackgroundColor() {
   return bgRGB;  
 }
 //Passing the above function to change the backgroundcolor change at random
-document.body.style.background = randomBackgroundColor();
+
 
 // console.log(randomBackgroundColor());
 
 
-setInterval(printQuote, 10000);
+setInterval(printQuote, 5000);
 
 /***
  * click event listener for the print quote button
