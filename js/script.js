@@ -64,13 +64,11 @@ let quotes = [
 
 // console.log(quotes);
 
-
-
 //GetRandomQuote function produces a random quote and picks the quote from above array as its index
-function getRandomQuote() {  
-  let getQuoteFromArray = Math.floor(Math.random() * 8) + 1; 
+function getRandomQuote(arr) {  
+  let randomNumber = Math.floor(Math.random() * arr.length); 
   // console.log("Random Number: ", getQuoteFromArray); 
-  return quotes[getQuoteFromArray]; 
+  return arr[randomNumber]; 
 }
 // console.log("Random Quote: ", getRandomQuote())
 
@@ -78,7 +76,7 @@ function getRandomQuote() {
 
 //function to print the quote as an HTML element
 function printQuote(){
-  let recallRandomQuote = getRandomQuote();
+  let recallRandomQuote = getRandomQuote(quotes);
 
   //building the HTML one line at a time and attaching it to the variable printRandomQuote
   let printRandomQuote = '' ; 
